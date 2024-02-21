@@ -1,0 +1,182 @@
+.introduce {
+    position: relative;
+
+    .avatar {
+        width: 90%;
+        margin: 0 auto;
+        h5{
+            color: red;
+        }
+    }
+
+    .delivery {
+        position: absolute;
+        bottom: 0;
+        .fast_shhoping {
+            background-color: #fff;
+        }
+    }
+}
+
+.our_team {
+    .card {
+        border: none !important;
+    }
+
+    svg {
+        opacity: 0.5;
+        color: gray;
+    }
+}
+
+.social_network {
+    svg:hover {
+        opacity: 1;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.instagram {
+    display: grid;
+    grid-template-columns: repeat(5, 19%);
+    grid-gap: 16px;
+
+    .item_insta {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        position: relative;
+
+        .like_comment {
+            color: #fff;
+            font-weight: 600;
+            width: 100%;
+            position: absolute;
+            padding: 15px 0;
+            bottom: 0;
+            opacity: 0;
+            z-index: 12;
+            transition: 1s;
+        }
+
+        &:hover {
+            .like_comment {
+                opacity: 1;
+            }
+
+            &::after {
+                content: "";
+                background-color: rgba(71, 69, 69, 0.73);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    }
+}
+
+.swipers {
+    overflow: hidden;
+
+    .prev_next {
+        svg:hover {
+            color: gray;
+        }
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .delivery_1024 {
+        display: none !important;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .delivery {
+            display: none !important;
+        }
+
+        .delivery_1024 {
+            display: flex !important;
+        }
+
+        .avatar {
+            margin: 20px 0;
+            padding: 10px;
+        }
+    }
+
+    @media screen and (max-width: 769px) {
+        .item_insta {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .our_team {
+            h4 {
+                font-size: 18px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 426px) {
+        .video_425 {
+            width: 100%;
+        }
+
+        .item_insta {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .margin_425 {
+            margin: 50px 0 !important;
+        }
+    }
+
+    @media screen and (max-width: 377px) {
+        .item_insta {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .margin_425 {
+            margin: 35px 0 !important;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        // Your styles for max-width: 320px here
+    }
+}
+:host ::ng-deep{
+    .mat-typography{
+        font-size: 30px !important; 
+        font-weight: 700 !important;
+    }
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+h5{
+    font-size: 1.25rem;
+}
+h4{
+    font-size: 1.5rem;
+}
+h3{
+    font-size: 1.75rem;
+}
+h2{
+    font-size: 2rem;
+}
+h1{
+    font-size: 2.25rem;
+}

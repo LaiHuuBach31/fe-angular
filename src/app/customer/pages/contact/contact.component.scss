@@ -1,0 +1,87 @@
+.contact_left {
+    padding: 50px 0;
+
+    p {
+        color: gray;
+    }
+
+    h1 {
+        font-size: 50px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    h4 {
+        margin: 25px 0;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .table {
+        tr {
+            border-style: hidden !important;
+        }
+
+        tbody {
+            border-style: unset !important;
+        }
+    }
+
+    .support_customer {
+        margin: 100px 0;
+
+        @media screen and (max-width: 1024px) {
+            margin: 50px 0;
+        }
+
+        @media screen and (max-width: 426px) {
+            margin: 20px 0;
+        }
+    }
+}
+.your_question {
+    p {
+        color: gray;
+    }
+
+    h1 {
+        font-size: 50px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .ip input {
+        padding: 10px;
+        border-radius: 0;
+        &:focus {
+            box-shadow: none !important;
+            border-color: black !important;
+        }
+    }
+
+    textarea {
+        border-radius: 0 !important;
+        &:focus {
+            box-shadow: none !important;
+            border-color: black !important;
+        }
+    }
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+h5{
+    font-size: 1.25rem;
+}
+h4{
+    font-size: 1.5rem;
+}
+h3{
+    font-size: 1.75rem;
+}
+h2{
+    font-size: 2rem;
+}
+h1{
+    font-size: 2.25rem;
+}

@@ -1,0 +1,82 @@
+<!-- Category List Start -->
+<div class="card card-table">
+    <div class="card-body">
+        <div class="title-header option-title mb-5">
+            <div class="right-options">
+                <ul>
+                    <li>
+                        <a class="btn btn-solid" routerLink="/admin/item/create">Add New</a>
+                    </li>
+                </ul>
+            </div>
+            <h5>All Item</h5>
+            <form class="d-inline-flex" action="" method="get">
+                <input name="keyword" class="demo-input  form-control w-100" placeholder="Search...." />
+                <button class="btn" style="color: #008080">
+                    <i class="search-icon ri-search-line"></i>
+                </button>
+            </form>
+        </div>
+        <div class="table-responsive css-overflow-x">
+            <div class="alert alert-danger" role="alert" *ngIf="error">
+                <strong>{{error}}</strong>
+            </div>
+            <table class="table all-package theme-table table-product" id="table_id">
+                <thead>
+                    <tr>
+                        <th>Item Id</th>
+                        <th>Item Name</th>
+                        <th>Item Status</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td class="">
+                            <span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="checkbox-1">
+                                    <label class="form-check-label" for="checkbox-1">{{item.id}}</label>
+                                </div>
+                            </span>
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.status == 1 ? "Hiển thị" : "Tạm ẩn" }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="order-detail.html">
+                                        <i class="ri-eye-line"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a routerLink="/admin/item/edit/{{item.id}}">
+                                        <i class="ri-pencil-line"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="delete(item.id)">
+                                        <i class="ri-delete-bin-line"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-5">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span
+                            aria-hidden="true">&laquo;</span>
+                    </a></li>
+                <li class="page-item">
+                    <a class="page-link" href="">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span
+                            aria-hidden="true">&raquo;</span>
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+</div>

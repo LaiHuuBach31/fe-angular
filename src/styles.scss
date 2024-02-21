@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Jost', sans-serif !important } 
+.d-block{
+    display: block !important;
+}
+.d-none{
+    display:  none !important;
+}
+// .mat-mdc-tab-list{
+//     .mat-mdc-tab-labels{
+//         .mdc-tab{
+//             .mdc-tab__content{
+//                 .mdc-tab__text-label{
+//                     font-weight: 550 !important;
+//                     color: black;
+//                 }
+//             }
+//         }
+//     }
+// }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

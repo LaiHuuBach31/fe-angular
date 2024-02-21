@@ -1,0 +1,173 @@
+.header{
+    .top{
+        border-bottom: 1px solid gray;
+        padding: 10px 100px;
+        overflow: hidden;
+        div{
+            p{
+                color: gray;
+                margin: 0;
+            }
+        }
+        
+       
+    }
+    .menu{
+        padding: 20px 100px;
+        @media screen and (max-width:1200px) {
+            padding: 20px 50px;
+            display: none !important;
+            img{
+                width: 100px;
+            }
+        }
+        .top_menu{
+        
+            ul{
+                list-style-type: none;
+                margin: 0;
+                li{
+                    display: inline-block;
+                    padding: 5px 35px;
+                    @media screen and (max-width:1024px) {
+                        padding: 5px 30px;
+                    }
+                    a{
+                       text-decoration: none;
+                       color: black;
+                    
+                    }
+                }
+            }
+        }
+        .left_menu{
+            position: relative;
+            span{
+                cursor: pointer;
+                &:hover{
+                    color: red;
+                    transition: 1s;
+                }
+            }
+           
+            .search_icon{
+                position: absolute;
+                left: -100%;
+                top : 130%;  
+                z-index: 100;
+                display: none;
+
+                .ip_search{
+                   position: relative;
+                    input{
+                        padding: 10px;
+                        width: auto;
+                        outline: none;
+                        z-index: 1000;
+                    }
+                    button{
+                        z-index: 100;
+                        position: absolute;
+                        top: 10%;
+                        right: 0;
+                        &:hover{
+                            span{
+                                color: red;
+                                transition: 1s;
+                            }
+                           
+                        }
+                    }
+                }
+            }
+            .close_icon{
+                display: none;
+            }
+          
+        }
+    }
+   
+}
+.menu_992{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (min-width:1025px) {
+           display: none !important;
+    }
+
+    .menu_992_left{
+        span{
+            padding-right: 10px;
+        }
+        .offcanvas{
+            .offcanvas-body{
+                .menu_option{
+                    ul{
+                        padding: 0;
+                        li{
+                            border-bottom: 1px solid red;
+                            padding: 10px 15px;
+                            list-style: none;
+                            a{
+                                text-decoration: none;
+                                color: black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .menu_992_right{
+        .left_menu{
+            position: relative;
+            align-items: center;
+            span{
+                cursor: pointer;
+                &:hover{
+                    color: red;
+                    transition: 1s;
+                }
+            }
+           
+            .search_icon{
+                position: absolute;
+                left: -200%;
+                top : 130%;  
+                z-index: 100;
+                display: none;
+
+                .ip_search{
+                   position: relative;
+                    input{
+                        padding: 10px;
+                        width: auto;
+                        outline: none;
+                        z-index: 1000;
+                    }
+                    button{
+                        z-index: 100;
+                        position: absolute;
+                        top: 10%;
+                        right: 0;
+                        &:hover{
+                            span{
+                                color: red;
+                                transition: 1s;
+                            }
+                           
+                        }
+                    }
+                }
+            }
+            .close_icon{
+                display: none;
+            }
+          
+        }
+    }
+}
+
+

@@ -1,0 +1,104 @@
+<div class="head" [ngClass]="getHeadClass()">
+    <div class="head-content">
+        <div class="head-content-left">
+            <div class="search-container">
+                <div *ngIf="!canShowSearchAsOVerlay" class="normal-search">
+                    <input type="search" class="search" name="" id="" placeholder="Search...">
+                    <i class="search-icon ri-search-line"></i>
+                </div>
+                <div *ngIf="canShowSearchAsOVerlay">
+                    <button [cdkMenuTriggerFor]="searchOverLay" class="search-menu-btn ripple">
+                        <i class="search-icon ri-search-line"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="head-content-right">
+            <div class="head-menu">
+                <div class="head-menu-item mobile-425">
+                    <button class="head-menu-item-btn ripple" [cdkMenuTriggerFor]="LanguageOverlay">
+                        <img [src]="'/assets/flags/' + selectedLanguage.flag + '.png'" class="flag" alt="flag">
+                    </button>
+                </div>
+                <div class="head-menu-item mobile-320">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="ri-moon-line menu-icon"></i>
+                    </button>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple" [cdkMenuTriggerFor]="notificationOverlay">
+                        <i class="ri-notification-line menu-icon"></i>
+                    </button>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <i class="ri-chat-1-line menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="head-user-avatar-container">
+                <div class="head-user-avatar" [cdkMenuTriggerFor]="userOverlay">
+                    <img src="https://glosbejewelry.net/upload/image/co-4-la-may-man-avatar-dep.jpg" alt="user" class="user-avatar">
+                    <div class="circle-indicator pulse"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #searchOverLay>
+    <div class="overlay overlay-search overlay-fall" cdkmenu>
+        <input type="search" name="" id="" class="search" placeholder="Search...">
+        <button class="search-btn">
+            <i class="search-icon ri-search-line"></i>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #LanguageOverlay>
+    <div class="overlay overlay-language overlay-fall" cdkMenu>
+        <ul>
+            <li *ngFor="let lang of languages" cdkMenuItem>
+                <img [src]="'/assets/flags/' + lang.flag + '.png'" alt="flag">
+                <span>{{lang.language}}</span>
+            </li>
+        </ul>
+
+    </div>
+</ng-template>
+
+<ng-template #notificationOverlay>
+    <div class="overlay overlay-notification overlay-fall" cdkMenu>
+        <ul>
+            <li class="notification-head-container">
+                <div class="notification-head">Notification</div>
+                <span class="view-all-link">
+                    <a> View All</a>
+                </span>
+            </li>
+            <li class="notification-message-container" *ngFor="let notification of notificaTions" cdkMenuItem>
+                <i [class]="notification.icon"></i>
+                <div>
+                    <div class="notification-subject">
+                        {{notification.subject}}
+                    </div>
+                    <p class="notification-desc">
+                        {{notification.description}}
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ng-template>
+
+<ng-template #userOverlay>
+    <div class="overlay overlay-user overlay-fall">
+        <ul>
+            <li *ngFor="let item of UserItems">
+                <i class="icon" [ngClass]="item.icon"></i>
+                <span>{{item.label}}</span>
+            </li>
+        </ul>
+    </div>
+
+</ng-template>

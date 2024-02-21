@@ -1,0 +1,124 @@
+<div class="container-fluid">
+    <!-- --start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0">Create Product</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0 justify-content-between">
+                        <li class="breadcrumb-item"><a>Product</a></li>
+                        <li><a>></a></li>
+                        <li class="breadcrumb-item active"><a>Create Product</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --end page title -->
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-xl-9 col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="avata-title mr-3 ">
+                                <i class="ri-instance-line"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="card-title mb-1">Product Information</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label-title" for="product-title-input">Product Name</label>
+                            <input type="text" class="form-control" placeholder="Product Name" formControlName="name">
+                            <div *ngIf="f.name.invalid && (f.name.dirty||f.name.touched)">
+                                <div *ngIf="f.name.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Product name is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-title" for="product-title-input">Price</label>
+                            <input type="text" class="form-control" placeholder="Price" formControlName="price">
+                            <div *ngIf="f.price.invalid && (f.price.dirty||f.price.touched)">
+                                <div *ngIf="f.price.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Product price is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-title" for="product-title-input">Discount</label>
+                            <input type="text" class="form-control" placeholder="%" formControlName="discount">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-title" for="product-title-input">Product Image</label>
+                            <input type="file" class="form-control" placeholder="Product Image" formControlName="image" (change)="onChange($event)">
+                            <div *ngIf="f.image.invalid && (f.image.dirty||f.image.touched)">
+                                <div *ngIf="f.image.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Product image is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row align-items-center">
+                            <label class="form-label-title col-sm-3 mb-0">Product Status</label>
+                            <div class="col-sm-9 d-flex align-items-center" >
+                                <div class="form-check me-4" >
+                                    <input class="form-check-input" type="radio" value="1"  formControlName="status" checked>
+                                    <label class="form-check-label" >
+                                      In stock
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="0"  formControlName="status" >
+                                    <label class="form-check-label">
+                                      Out stock
+                                    </label>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-sm-3 col-form-label form-label-title">Category</label>
+                            <select class="form-select" aria-label="Default select example" formControlName="categoryId">
+                                <option value="">Choose your category</option>
+                                <option  *ngFor="let item of categories" value="{{item.id}}" selected>{{item.name}}</option>
+                            </select>
+                            <div *ngIf="f.categoryId.invalid && (f.categoryId.dirty||f.categoryId.touched)">
+                                <div *ngIf="f.categoryId.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Product category is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-sm-3 col-form-label form-label-title">Item</label>
+                            <select class="form-select" aria-label="Default select example" formControlName="itemId">
+                                <option value="">Choose your item</option>
+                                <option  *ngFor="let item of items" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                            <div *ngIf="f.itemId.invalid && (f.itemId.dirty||f.itemId.touched)">
+                                <div *ngIf="f.itemId.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Product item is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-title">Description</label>
+                        
+                            <ckeditor [editor]="Editor" data=" " formControlName="description"></ckeditor>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Create</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end-col -->
+            <div class="col-xl-3 col-lg-4">
+            </div>
+            <!-- end-col -->
+        </div>
+        <!-- end-row -->
+    </form>
+</div>

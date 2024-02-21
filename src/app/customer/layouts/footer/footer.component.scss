@@ -1,0 +1,58 @@
+.footer{
+    padding: 50px 100px;
+    overflow: hidden;
+    background-color: black;
+    .mat-mdc-card{
+        background-color: black;
+        .mat-mdc-card-content{
+            .mat-icon, .material-icons{
+                color: red;
+                padding: 0px 5px;
+            }
+        }
+        h3{
+            color: #fff;
+            border-bottom: 2px solid red;
+        }
+        
+    }
+    p{
+        color: gray;
+        margin: 0;
+        padding: 10px 0px;
+    }
+    ul{
+        padding: 0;
+        li{
+            list-style: none;
+            padding: 10px 0px;
+            a{
+                text-decoration: none;
+                color: gray;
+                padding: 10px 0px;
+                &:hover{
+                    color: red;
+                    transition: 1s;
+                }
+            }  
+        }
+    }
+    .send_mail{
+        overflow: hidden;
+        position: relative;
+        input{
+            padding: 10px;
+            width: 100%;
+            outline: none;
+            margin-bottom: 20px;
+        }
+        button{
+            position: absolute;
+            top: 0;
+            right:0px
+        }
+    }
+
+   
+}
+//   
