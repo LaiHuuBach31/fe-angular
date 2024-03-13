@@ -6,12 +6,12 @@
                     <div class="carousel-inner">
 
                         <div class="carousel-item active">
-                            <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/400422727_733665042129634_735942260299072874_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH96NnzbwZGJ83AdNPH-WZwHxUp7deIbUIfFSnt14htQmlx0Raw3MDzOBJEBYPtF4zZdamLmUIhYk9EaWqL7vmQ&_nc_ohc=at7uimAkcaAAX_FNHnf&_nc_ht=scontent.fhan2-3.fna&oh=00_AfCFjPYsoEgkUuQS-4nQTQTwB8_kNqdA4Z3lRc4qF4P9Jg&oe=654F1956" class="d-block w-100" height="100%">
+                            <img src="http://localhost:8080/api/v1/file/files/{{product.image}}" class="d-block w-100" height="100%">
                         </div>
 
                       
                         <div class="carousel-item">
-                            <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/400422727_733665042129634_735942260299072874_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH96NnzbwZGJ83AdNPH-WZwHxUp7deIbUIfFSnt14htQmlx0Raw3MDzOBJEBYPtF4zZdamLmUIhYk9EaWqL7vmQ&_nc_ohc=at7uimAkcaAAX_FNHnf&_nc_ht=scontent.fhan2-3.fna&oh=00_AfCFjPYsoEgkUuQS-4nQTQTwB8_kNqdA4Z3lRc4qF4P9Jg&oe=654F1956" class="d-block w-100" height="100%">
+                            <img src="" class="d-block w-100" height="100%">
                         </div>
               
                     </div>
@@ -38,8 +38,8 @@
                     <h2>
                         <div class="d-flex">
                           
-                            <p class="m-0" style="font-weight: 700; text-decoration: line-through;">$ 15.00</p>
-                            <p class="m-0 text-danger mx-3" style="font-weight: 700; ">$ 1.00</p>
+                            <p class="m-0" style="font-weight: 700; text-decoration: line-through;">$ {{product.price}}</p>
+                            <p class="m-0 text-danger mx-3" style="font-weight: 700;" *ngIf="product.discount>0">$ {{product.discount}}</p>
                            
                         </div>
                     </h2>
@@ -66,10 +66,7 @@
                                            
                                             <div class="mx-3 d-flex align-items-center">
                                                 <input type="radio" name="" value="1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" style="color: red;" class="icon icon-tabler icon-tabler-shirt-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M14.883 3.007l.095 -.007l.112 .004l.113 .017l.113 .03l6 2a1 1 0 0 1 .677 .833l.007 .116v5a1 1 0 0 1 -.883 .993l-.117 .007h-2v7a2 2 0 0 1 -1.85 1.995l-.15 .005h-10a2 2 0 0 1 -1.995 -1.85l-.005 -.15v-7h-2a1 1 0 0 1 -.993 -.883l-.007 -.117v-5a1 1 0 0 1 .576 -.906l.108 -.043l6 -2a1 1 0 0 1 1.316 .949a2 2 0 0 0 3.995 .15l.009 -.24l.017 -.113l.037 -.134l.044 -.103l.05 -.092l.068 -.093l.069 -.08c.056 -.054 .113 -.1 .175 -.14l.096 -.053l.103 -.044l.108 -.032l.112 -.02z" stroke-width="0" fill="currentColor"></path>
-                                                </svg>
+                                                <i class="ri-palette-line" style="font-size: 25px;"></i>
                                             </div>
                                            
                                         </div>
@@ -82,8 +79,7 @@
                                         <div class="btn-group" role="group">
                                             <div class="">
                                                 <select class="form-select form-select-lg" name="attr_id[]" id="" style="padding-top:0; padding-bottom: 0; font-weight: 500; ">
-                                                    <option selected value="">Choose your size</option>
-                                                 
+                        
                                                     <option value="1">M</option>
                                                    
                                                 </select>

@@ -22,11 +22,31 @@ const routes: Routes = [
               loadChildren: () => import('./pages/item/item.module').then(m => m.ItemModule)
             },
             {
+              path: 'color',
+              loadChildren: () => import('./pages/color/color.module').then(m => m.ColorModule)
+            },
+            {
+              path: 'size',
+              loadChildren: () => import('./pages/size/size.module').then(m => m.SizeModule)
+            },
+            {
+              path: 'image',
+              loadChildren: () => import('./pages/image/image.module').then(m => m.ImageModule)
+            },
+            {
+              path: 'token',
+              loadChildren: () => import('./pages/token/token.module').then(m => m.TokenModule)
+            },
+            {
+              path: 'variantproduct',
+              loadChildren: () => import('./pages/variant/variant.module').then(m => m.VariantModule)
+            },
+            {
                 path: 'user',
                 loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
             },
             {
-                path: 'roles',
+                path: 'role',
                 loadChildren: () => import('./pages/roles/roles.module').then(m => m.RolesModule)
             },
             {

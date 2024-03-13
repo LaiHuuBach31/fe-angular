@@ -12,8 +12,20 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  public getProduct():Observable<any>{
-    return this.http.get<any>(`${this.apiServiceUrl}`);
+  
+  public getAllProduct():Observable<any>{
+    return this.http.get<any>(`${this.apiServiceUrl}/all`);
+  }
+
+  public fillterProduct(categoryId:any, pageNo:any = 1):Observable<any>{
+    return this.http.get<any>(`${this.apiServiceUrl}/filter?categoryId=${categoryId}&pageNo=${pageNo}`);
+  }
+
+  public getProduct(keyword:any, pageNo:any = 1):Observable<any>{
+    if(keyword != null){
+      return this.http.get<any>(`${this.apiServiceUrl}?keyword=${keyword}&pageNo=${pageNo}`);
+    }
+    return this.http.get<any>(`${this.apiServiceUrl}?pageNo=${pageNo}`);
   }
 
   public getProductId(productId : number):Observable<any>{

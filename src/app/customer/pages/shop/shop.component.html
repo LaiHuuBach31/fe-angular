@@ -1,23 +1,28 @@
+<div class="bg-primary" >
+    <div>
+        <img src="https://previews.123rf.com/images/vectorgift/vectorgift1608/vectorgift160800106/61622824-sale-discount-background-for-the-online-store-shop-promotional-leaflet-promotion-poster-banner.jpg" height="300px" width="100%" alt="">
+    </div>
+</div>
 <div class="container" style="margin-top: 30px;">
-    <div class="d-flex justify-content-between align-items-center p-2">
+    <!-- <div class="d-flex justify-content-between align-items-center p-2">
         <div>
             <h3>Shop</h3>
         </div>
         <div>
             <a href="" style="text-decoration: none; color: gray;">Home</a> > <b><a href="" style="color: #111; text-decoration: none;">Shop</a></b>
         </div>
-    </div>
+    </div> -->
     <hr>
 
     <div class="row">
         <div class="col-lg-3">
             <h6>Search</h6>
             <div class="filter_price">
-                <form action="" method="get">
+                <form [formGroup]="formSearch" (ngSubmit)="onSearch()">
 
                     <div class="search_pro mt-2 mb-5">
 
-                        <input type="text" class="form-control" name="keyword" style="border: none; border-bottom: 2px solid #111;">
+                        <input type="text" class="form-control" formControlName="keyword" style="border: none; border-bottom: 2px solid #111;">
                         <button type="submit" style="border: none; background-color: #fff;"><span class='material-icons'>search</span></button>
 
                     </div>
@@ -28,7 +33,7 @@
             <hr>
             <h6>Filter by Price</h6>
             <div class="filter_price">
-                <form action="" method="get">
+                <form [formGroup]="formPrice" (ngSubmit)="onPrice()">
 
                     <div class="filter_price mt-4">
                         <div class="range mt-4">
@@ -37,9 +42,9 @@
                                 <span class="to"><b>$ 111</b></span>
                             </div>
                             <div class="sort_price mt-2">
-                                <input type="text" name="min_price">
+                                <input type="text" formControlName="min_price">
                                 <span>—</span>
-                                <input type="text" name="max_price">
+                                <input type="text" formControlName="max_price">
                             </div>
                         </div>
                     </div>
@@ -55,11 +60,10 @@
             <div class="scrollbar ">
                 <div class="filter_color ">
                     <ul>
-                        <li class="d-flex align-items-center justify-content-between">
+                        <li *ngFor="let item of colors" class="d-flex align-items-center justify-content-between">
                             <div>
-
                                 <a href="">
-                                    <span class='material-icons'>search</span>
+                                    <i [style.color]="item.name" class="ri-palette-line" style="font-size: 25px;"></i>
                                 </a>
                             </div>
                             <span class="mx-2">( 10 )</span>
@@ -73,13 +77,13 @@
             <div class="filter_size">
                 <ul>
                  
-                    <li>
-                        <a href="">a</a>
+                    <li *ngFor="let item of sizes">
+                        <a href="">{{item.name}}</a>
                     </li>
                 </ul>
             </div>
             <hr>
-            <div class="sale_off text-center">
+            <div class="sale_off text-center mb-3">
                 <h3>Autumn Sale</h3>
                 <h1>15%</h1>
                 <p class="text-secondary">
@@ -91,14 +95,14 @@
         <div class="col-lg-9">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
-                    <div style="border-bottom: 2px solid #111;">
-                        <b class="mb-2">Category : </b>
+                    <div >
+                        <b style="border-bottom: 2px solid #111;" class="mb-2">Category:</b>
                     </div>
                     <div class="categories">
                         <ul>
-                    
-                            <li><a href="">j</a></li>
-                          
+                            <li  *ngFor="let item of categories" >
+                                <a (click)="filterCategory(item.id)" style="cursor: pointer;">{{item.name}}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -116,7 +120,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-primary" style="height: 31px;">
-                                    <i class="fa fa-filter" aria-hidden="true" style="vertical-align: super;"></i>
+                                    <i class="ri-equalizer-line" style="vertical-align: super;"></i>
                                 </button>
                             </div>
                         </div>
@@ -129,14 +133,14 @@
             <div class="row my-3">
                 <div class="row">
                   
-                    <h3 class="text-center mt-5">No Products Found !</h3>
+                    <h3 class="text-center mt-5" *ngIf="products.length === 0">No Products Found !</h3>
                   
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" *ngFor="let item of products">
                         <div class="item1 my-4">
                             <div class="product_top">
                                 <div class="image_pro">
-                                    <img class="img_first" src="https://noithatbinhminh.com.vn/wp-content/uploads/2022/08/anh-dep-44.jpg" width="100%" alt="">
-                                    <img class="img_secound" src="https://i0.wp.com/thatnhucuocsong.com.vn/wp-content/uploads/2022/01/hinh-nen-zalo-thien-nhien-dep.jpg?ssl\\u003d1" width="100%" alt="">
+                                    <img class="img_first" src="http://localhost:8080/api/v1/file/files/{{item.image}}" width="100%" alt="">
+                                    <!-- <img class="img_secound" src="https://i0.wp.com/thatnhucuocsong.com.vn/wp-content/uploads/2022/01/hinh-nen-zalo-thien-nhien-dep.jpg?ssl\\u003d1" width="100%" alt=""> -->
                                 </div>
                                 <div class="pro_right bg-light">
                                     <div class="mt-2">
@@ -178,25 +182,33 @@
 
                                 <div class="d-flex justify-content-between align-items-center p-1 mt-1" style="flex-wrap: wrap;">
                                     <div>
-                                        <p class="m-0" style="opacity: 0.9;">a</p>
+                                        <p class="m-0" style="opacity: 0.9;">{{item.name}}</p>
                                     </div>
                                     <div>
-                                       
-                                        <p class="m-0" style="font-weight: 700; text-decoration: line-through;">$ .00</p>
-                                        <p class="m-0 text-danger" style="font-weight: 700; ">$ .00</p>
-                                    
-                                      
-
+                                        <p class="m-0" style="font-weight: 700; text-decoration: line-through;">$ {{item.price}}</p>
+                                        <p *ngIf="item.discount > 0" class="m-0 text-danger" style="font-weight: 700; ">$ {{item.discount}}</p>
                                     </div>
                                 </div>
-                                <div class="select_optopn p-1">
-                                    <a href="">select options</a>
+                                <div class="select_optopn p-1" >
+                                    <a href="" routerLink="/shop/{{item.id}}">select options</a>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                 
+                    <div class="mt-5" *ngIf="totalItems > 9" style="margin: 0 auto;">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span
+                                        aria-hidden="true">&laquo;</span>
+                                </a></li>
+                            <li class="page-item" *ngFor="let page of numbers">
+                                <a class="page-link" href="" [routerLink]="[]"[queryParams]="{ pageNo: page, keyword:kw, categoryId: cate }">{{page}}</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span
+                                        aria-hidden="true">&raquo;</span>
+                                </a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

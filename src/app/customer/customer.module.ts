@@ -14,6 +14,9 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -28,12 +31,16 @@ import { CartComponent } from './pages/cart/cart.component';
     ContactComponent,
     AboutComponent,
     DetailComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CustomerModule { }

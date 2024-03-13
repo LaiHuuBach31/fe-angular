@@ -13,8 +13,15 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  public getCategory():Observable<any>{
-    return this.http.get<any>(`${this.apiServerUrl}`);
+  public getAllCategory():Observable<any>{
+    return this.http.get<any>(`${this.apiServerUrl}/all`);
+  }
+
+  public getCategory(keyword:any, pageNo:any = 1):Observable<any>{
+    if(keyword != null){
+      return this.http.get<any>(`${this.apiServerUrl}?keyword=${keyword}&pageNo=${pageNo}`);
+    }
+    return this.http.get<any>(`${this.apiServerUrl}?pageNo=${pageNo}`);
   }
 
   public getCategoryId(categoryId : number): Observable<any>{

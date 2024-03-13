@@ -1,57 +1,55 @@
-<!-- User List Start -->
+<!-- Category List Start -->
 <div class="card card-table">
     <div class="card-body">
-        <div class="title-header option-title">
-            <h5>User List</h5>
+        <div class="title-header option-title mb-5">
             <div class="right-options">
                 <ul>
                     <li>
-                        <a class="btn btn-solid" href="">Add User</a>
+                        <a class="btn btn-solid" routerLink="/admin/user/create">Add New</a>
                     </li>
                 </ul>
             </div>
+            <h5>All User</h5>
+            <form class="d-inline-flex" [formGroup]="fromSearch" (ngSubmit)="onSubmit()">
+                <input formControlName="keyword" class="demo-input  form-control w-100" placeholder="Search...." />
+                <button class="btn" style="color: #008080" type="submit">
+                    <i class="search-icon ri-search-line"></i>
+                </button>
+            </form>
         </div>
         <div class="table-responsive css-overflow-x">
-            <div class="product-search">
-                <label class="form-check-label" for="checkbox-1">Search:</label>
-                <input type="search" class="" placeholder="" aria-controls="table_id">
+            <div class="alert alert-danger" role="alert" *ngIf="error">
+                <strong>{{error}}</strong>
             </div>
             <table class="table all-package theme-table table-product" id="table_id">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Product Image</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Current Qty</th>
-                        <th>Price</th>
-                        <th>Status</th>
+                        <th>User Id</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Birthday</th>
+                        <th>Address</th>
+                        <th>Telephone</th>
+                        <th>Role</th>
                         <th>Option</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let item of users">
                         <td class="">
                             <span>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="1" id="checkbox-1">
-                                    <label class="form-check-label" for="checkbox-1"></label>
+                                    <label class="form-check-label" for="checkbox-1">{{item.id}}</label>
                                 </div>
                             </span>
                         </td>
-                        <td>
-                            <div class="table-image">
-                                <img src="/assets/test.png" class="img-fluid" alt="">
-                            </div>
-                        </td>
-                        <td>Aata Buscuit</td>
-                        <td>Buscuit</td>
-                        <td>12</td>
-                        <td class="td-price">$95.97</td>
-                        <td class="status-danger">
-                            <span>Pending</span>
-                        </td>
+                        <td>{{item.fullName}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.birthday}}</td>
+                        <td>{{item.address}}</td>
+                        <td>{{item.telephone}}</td>
+                        <td>{{item.role}}</td>
                         <td>
                             <ul>
                                 <li>
@@ -60,97 +58,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">
+                                    <a routerLink="/admin/user/edit/{{item.id}}">
                                         <i class="ri-pencil-line"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModalToggle">
-                                        <i class="ri-delete-bin-line"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr class="even">
-                        <td>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="checkbox-1"
-                                    class="form-check-input">
-                                <label class="form-check-label" for="checkbox-1"></label>
-                            </div>
-
-                        </td>
-                        <td>
-                            <div class="table-image">
-                                <img src="/assets/test.png" class="img-fluid" alt="">
-                            </div>
-                        </td>
-                        <td>Cold Brew Coffee</td>
-                        <td>Buscuit</td>
-                        <td>12</td>
-                        <td class="td-price">$95.97</td>
-                        <td class="status-close">
-                            <span>Approved</span>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="order-detail.html">
-                                        <i class="ri-eye-line"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <i class="ri-pencil-line"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModalToggle">
-                                        <i class="ri-delete-bin-line"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="checkbox-1">
-                                    <label class="form-check-label" for="checkbox-1"></label>
-                                </div>
-                            </span>
-                        </td>
-                        <td>
-                            <div class="table-image">
-                                <img src="/assets/test.png" class="img-fluid" alt="">
-                            </div>
-                        </td>
-                        <td>Peanut Butter Cookies</td>
-                        <td>Buscuit</td>
-                        <td>12</td>
-                        <td class="td-price">$95.97</td>
-                        <td class="status-danger">
-                            <span>Pending</span>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a>
-                                        <i class="ri-eye-line"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <i class="ri-pencil-line"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                    <a (click)="delete(item.id)">
                                         <i class="ri-delete-bin-line"></i>
                                     </a>
                                 </li>
@@ -160,18 +73,18 @@
                 </tbody>
             </table>
         </div>
-        <nav aria-label="Page navigation example" class="mt-4">
-            <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
+        <div class="mt-5" *ngIf="totalItems > 10">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span
+                            aria-hidden="true">&laquo;</span>
+                    </a></li>
+                <li class="page-item" *ngFor="let page of numbers">
+                    <a class="page-link" [routerLink]="[]" [queryParams]="{pageNo:page, keyword: kw}" >{{page}}</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
+                <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span
+                            aria-hidden="true">&raquo;</span>
+                    </a></li>
             </ul>
-        </nav>
+        </div>
     </div>
 </div>

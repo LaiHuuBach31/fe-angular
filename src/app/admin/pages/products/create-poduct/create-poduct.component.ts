@@ -30,14 +30,14 @@ export class CreatePoductComponent {
     ) { }
 
     ngOnInit(): void {
-        this.categoryService.getCategory().subscribe(
+        this.categoryService.getAllCategory().subscribe(
             (res: any) => {
-              this.categories = res.data.content;
+              this.categories = res.data;
             }
         );
-        this.itemService.getItem().subscribe(
+        this.itemService.getAllItem().subscribe(
             (res:any)=>{
-                this.items = res.data.content;
+                this.items = res.data;
             }
         )
     }

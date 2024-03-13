@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <!-- --start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0">Create Variant Product</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0 justify-content-between">
+                        <li class="breadcrumb-item"><a>Variant Product</a></li>
+                        <li><a>></a></li>
+                        <li class="breadcrumb-item active"><a>Create Variant Product</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- --end page title -->
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-xl-9 col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="avata-title mr-3 ">
+                                <i class="ri-instance-line"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="card-title mb-1">Variant Product Information</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="col-sm-3 col-form-label form-label-title">Product</label>
+                            <select class="form-select" aria-label="Default select example" formControlName="productId">
+                                <option value="">Choose your category</option>
+                                <option  *ngFor="let item of products" value="{{item.id}}" selected>{{item.name}}</option>
+                            </select>
+                            <div *ngIf="f.productId.invalid && (f.productId.dirty||f.productId.touched)">
+                                <div *ngIf="f.productId.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Product is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-sm-3 col-form-label form-label-title">Color</label>
+                            <select class="form-select" aria-label="Default select example" formControlName="colorId">
+                                <option value="">Choose your color</option>
+                                <option  *ngFor="let item of colors" value="{{item.id}}" selected> 
+                                    {{item.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="f.colorId.invalid && (f.colorId.dirty||f.colorId.touched)">
+                                <div *ngIf="f.colorId.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Color is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-sm-3 col-form-label form-label-title">Size</label>
+                            <select class="form-select" aria-label="Default select example" formControlName="sizeId">
+                                <option value="">Choose your size</option>
+                                <option  *ngFor="let item of sizes" value="{{item.id}}" selected>{{item.name}}</option>
+                            </select>
+                            <div *ngIf="f.sizeId.invalid && (f.sizeId.dirty||f.sizeId.touched)">
+                                <div *ngIf="f.sizeId.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Size is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-title" for="product-title-input">Quantity</label>
+                            <input type="text" class="form-control" placeholder="Quantity" formControlName="quantity" (input)="errors=false">
+                            <div *ngIf="f.quantity.invalid && (f.quantity.dirty||f.quantity.touched)">
+                                <div *ngIf="f.quantity.errors?.['required']">
+                                    <small id="helpId" class="text-danger">Quantity is required</small>
+                                </div>
+                                <div *ngIf="f.name.errors?.['minlength']">
+                                    <small id="helpId" class="text-danger">Quantity min is 1</small>
+                                </div>
+                            </div>
+                            <div *ngIf="errors">
+                                <small id="helpId" class="text-danger">{{errors}}</small>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Create</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end-col -->
+            <div class="col-xl-3 col-lg-4">
+            </div>
+            <!-- end-col -->
+        </div>
+        <!-- end-row -->
+    </form>
+</div>

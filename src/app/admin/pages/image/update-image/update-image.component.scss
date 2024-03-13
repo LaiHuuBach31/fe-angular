@@ -1,0 +1,168 @@
+$bold-back: #000;
+
+.page-title-box {
+    h4 {
+        font-weight: 700;
+        font-size: 15px !important;
+        text-transform: uppercase;
+        padding: 0 0 20px;
+    }
+
+    .page-title-right {
+        li:nth-last-child(3) {
+            color: $bold-back;
+        }
+
+        li {
+            font-size: 14px;
+            margin-left: 10px;
+
+            a {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.card {
+    margin-bottom: 1.5rem;
+
+    .card-header {
+        padding: 20px;
+
+        .avata-title {
+            background: rgb(235, 235, 235);
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+
+            i {
+                font-size: 25px;
+                color: rgb(87, 120, 147);
+            }
+        }
+
+        .flex-grow-1 {
+            .card-title {
+                font-size: 15px;
+                margin: 0 0 7px 0;
+                color: $bold-back;
+                font-weight: 700;
+            }
+
+            .text-muted {
+                font-size: 13px;
+            }
+        }
+
+    }
+
+    .card-body {
+        label {
+            display: inline-block;
+        }
+
+        .form-label-title {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 13px;
+            color: $bold-back;
+        }
+        input{
+            outline: 0;
+            border: 1px solid #e9e7e7;
+            font-size: 13px;
+        }
+
+    }
+}
+.form-control:focus, .form-select:focus{
+    box-shadow: none;
+}
+$bold-back: #000;
+
+.page-title-box {
+    h4 {
+        font-weight: 700;
+        font-size: 15px !important;
+        text-transform: uppercase;
+        padding: 0 0 20px;
+    }
+
+    .page-title-right {
+        li:nth-last-child(3) {
+            color: $bold-back;
+        }
+
+        li {
+            font-size: 14px;
+            margin-left: 10px;
+
+            a {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.card {
+    margin-bottom: 1.5rem;
+
+    .card-header {
+        padding: 20px;
+
+        .avata-title {
+            background: rgb(235, 235, 235);
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+
+            i {
+                font-size: 25px;
+                color: rgb(87, 120, 147);
+            }
+        }
+
+        .flex-grow-1 {
+            .card-title {
+                font-size: 15px;
+                margin: 0 0 7px 0;
+                color: $bold-back;
+                font-weight: 700;
+            }
+
+            .text-muted {
+                font-size: 13px;
+            }
+        }
+
+    }
+
+    .card-body {
+        label {
+            display: inline-block;
+        }
+
+        .form-label-title {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 13px;
+            color: $bold-back;
+        }
+        input{
+            outline: 0;
+            border: 1px solid #e9e7e7;
+            font-size: 13px;
+        }
+
+    }
+}
+.form-control:focus, .form-select:focus{
+    box-shadow: none;
+}

@@ -1,0 +1,244 @@
+.card {
+    border: none;
+
+    .title-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h5 {
+            font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (1920 - 320)));
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .right-options {
+            ul {
+                display: flex;
+                align-items: center;
+                gap: calc(9px + (15 - 9) * ((100vw - 320px) / (1920 - 320)));
+                -webkit-box-align: center;
+
+                li {
+                    list-style: none;
+
+                    a {
+                        font-size: calc(15px + (16 - 15) * ((100vw - 320px) / (1920 - 320)));
+                        color: #222;
+                        text-transform: capitalize;
+                        display: block;
+                        text-decoration: none;
+                        letter-spacing: 1px;
+                    }
+
+                    .btn {
+                        padding: calc(7px + (10 - 7) * ((100vw - 320px) / (1920 - 320))) calc(14px + (32 - 14) * ((100vw - 320px) / (1920 - 320)));
+                        font-size: 14px;
+                        color: #fff;
+                    }
+
+                    .btn-solid {
+                        border: 1px solid #0da487 !important;
+                        background-color: #0da487 !important;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+}
+
+.card-table {
+    padding: calc(14px + (25 - 14) * ((100vw - 320px) / (1920 - 320)));
+}
+
+.css-overflow-x::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+    /* Độ rộng mới của thanh trượt */
+}
+
+.css-overflow-x::-webkit-scrollbar-thumb {
+    background-color: #88cfc1;
+    border-radius: 10px;
+    /* Màu của thanh trượt */
+}
+
+.css-overflow-x::-webkit-scrollbar-thumb:hover {
+    background-color: #0da487;
+    /* Màu của thanh trượt khi hover */
+}
+
+.product-search {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+    align-items: center;
+
+    input {
+        border: 1px solid #ced4da;
+        padding: 8px 38px 8px 10px;
+        margin-left: 13px;
+        outline: 0;
+        border-radius: 3px;
+        background-color: transparent;
+    }
+}
+
+table {
+    thead {
+        tr {
+            th {
+                border-bottom: 0;
+                color: #4a5568;
+                font-size: 15.0195px;
+                font-weight: 700;
+                border-top: 0;
+                background-color: #f3f3f3 !important;
+                text-align: center;
+                min-width: 170px;
+                padding: 15px !important;
+                font-weight: bold;
+            }
+
+            th:first-child {
+                max-width: none !important;
+                border-top-left-radius: 9px;
+                border-bottom-left-radius: 9px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                border-top: 0;
+                padding: 12px 15px;
+                border: none;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle !important;
+
+                .form-check {
+                    .form-check-input[type="checkbox"] {
+                        transform: scale(1.3);
+                    }
+
+                }
+
+            }
+
+            td:nth-child(4) {
+                color: #0da487;
+            }
+
+            td:first-child {
+                border-top-left-radius: 9px;
+                border-bottom-left-radius: 9px;
+            }
+
+            .table-image {
+                width: 65px;
+                height: 65px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+
+            }
+
+            .td-price {
+                font-weight: 800;
+            }
+
+            .status-danger {
+                span {
+                    background-color: rgba(226, 36, 84, 0.15);
+                    color: #e22454;
+                    padding: 5px 10px;
+                    text-transform: capitalize;
+                    display: inline-block;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    font-weight: 400;
+                }
+            }
+
+            .status-close {
+                span {
+                    background-color: rgba(47, 135, 51, 0.15);
+                    color: #2f8733;
+                    padding: 5px 10px;
+                    text-transform: capitalize;
+                    display: inline-block;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    font-weight: 400;
+                }
+            }
+
+            td:last-child {
+                ul {
+                    padding-left: 0px;
+                    list-style-type: none;
+                    margin-bottom: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: nowrap;
+                    gap: 15px;
+
+                    li {
+                        a {
+                            color: #0da487;
+                            text-decoration: none;
+                            letter-spacing: 1px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+
+    a,
+    .pagination-item {
+        margin: 0 5px;
+        padding: 8px 12px;
+        background-color: #008080;
+        color: #fff !important;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &.active {
+            background-color: #008080;
+        }
+    }
+}
+
+.form-control:focus {
+    box-shadow: none;
+}

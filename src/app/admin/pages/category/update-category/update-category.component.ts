@@ -51,7 +51,7 @@ export class UpdateCategoryComponent implements OnInit{
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: 'Create category Successfully',
+      title: 'Update category Successfully',
       showConfirmButton: false,
       timer: 1000
     })

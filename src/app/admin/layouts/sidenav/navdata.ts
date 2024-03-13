@@ -8,7 +8,7 @@ export const navbarData: INavbarData[] = [
     },
     {
         routeLink: 'product',
-        icon: 'ri-store-3-line',
+        icon: 'ri-shirt-line',
         label: 'Prodcts',
         items: [
             {
@@ -37,6 +37,36 @@ export const navbarData: INavbarData[] = [
         ]
     },
     {
+        routeLink: 'color',
+        icon: 'ri-palette-line',
+        label: 'Color',
+        items: [
+            {
+                routeLink: 'color/list',
+                label: 'List Color',
+            },
+            {
+                routeLink: 'color/create',
+                label: 'Add New Color',
+            }
+        ]
+    },
+    {
+        routeLink: 'size',
+        icon: 'ri-font-size-2',
+        label: 'Size',
+        items: [
+            {
+                routeLink: 'size/list',
+                label: 'List Size',
+            },
+            {
+                routeLink: 'size/create',
+                label: 'Add New Size',
+            }
+        ]
+    },
+    {
         routeLink: 'item',
         icon: 'ri-list-check-2',
         label: 'Item',
@@ -48,6 +78,51 @@ export const navbarData: INavbarData[] = [
             {
                 routeLink: 'item/create',
                 label: 'Add New Item',
+            }
+        ]
+    },
+    {
+        routeLink: 'image',
+        icon: 'ri-file-image-line',
+        label: 'Image',
+        items: [
+            {
+                routeLink: 'image/list',
+                label: 'All images',
+            },
+            {
+                routeLink: 'image/create',
+                label: 'Add new image',
+            }
+        ]
+    },
+    {
+        routeLink: 'token',
+        icon: 'ri-token-swap-line',
+        label: 'Token',
+        items: [
+            {
+                routeLink: 'token/list',
+                label: 'All tokens',
+            },
+            // {
+            //     routeLink: 'token/create',
+            //     label: 'Add new token',
+            // }
+        ]
+    },
+    {
+        routeLink: 'variantproduct',
+        icon: 'ri-product-hunt-line',
+        label: 'Variant Product',
+        items: [
+            {
+                routeLink: 'variantproduct/list',
+                label: 'All variant',
+            },
+            {
+                routeLink: 'variantproduct/create',
+                label: 'Add new variant product',
             }
         ]
     },
@@ -67,17 +142,17 @@ export const navbarData: INavbarData[] = [
         ]
     },
     {
-        routeLink: 'roles',
-        icon: 'ri-user-3-line',
-        label: 'Roles',
+        routeLink: 'carts',
+        icon: 'ri-shopping-cart-line',
+        label: 'Cart',
         items: [
             {
-                routeLink: 'roles/list',
-                label: 'List Roles',
+                routeLink: 'carts/list',
+                label: 'List Carts',
             },
             {
-                routeLink: 'roles/create',
-                label: 'Add New Roles',
+                routeLink: 'carts/create',
+                label: 'Add New Cart',
             }
         ]
     },
@@ -100,25 +175,6 @@ export const navbarData: INavbarData[] = [
             }
         ]
     },
-    {
-        routeLink: 'Settings',
-        icon: 'ri-home-line',
-        label: 'Settings',
-        expanded: false,
-        items: [
-            {
-                routeLink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routeLink: 'settings/customize',
-                label: 'Customize'
-            }
-        ]
-    },
-    {
-        routeLink: 'banner',
-        icon: 'ri-image-line',
-        label: 'Banner'
-    },
+   
+    
 ];

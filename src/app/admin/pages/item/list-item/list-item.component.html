@@ -10,9 +10,9 @@
                 </ul>
             </div>
             <h5>All Item</h5>
-            <form class="d-inline-flex" action="" method="get">
-                <input name="keyword" class="demo-input  form-control w-100" placeholder="Search...." />
-                <button class="btn" style="color: #008080">
+            <form class="d-inline-flex" [formGroup]="fromSearch" (ngSubmit)="onSubmit()">
+                <input formControlName="keyword" class="demo-input  form-control w-100" placeholder="Search...." />
+                <button class="btn" style="color: #008080" type="submit">
                     <i class="search-icon ri-search-line"></i>
                 </button>
             </form>
@@ -65,13 +65,13 @@
                 </tbody>
             </table>
         </div>
-        <div class="mt-5">
+        <div class="mt-5" *ngIf="totalItem > 10">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span
                             aria-hidden="true">&laquo;</span>
                     </a></li>
-                <li class="page-item">
-                    <a class="page-link" href="">1</a>
+                <li class="page-item" *ngFor="let page of numbers">
+                    <a class="page-link" [routerLink]="[]" [queryParams]="{pageNo : page, keyword:kw}">{{page}}</a>
                 </li>
                 <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span
                             aria-hidden="true">&raquo;</span>

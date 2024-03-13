@@ -19,6 +19,7 @@
     border: none;
     background-color: #d2e0f7;
     color: #808080;
+    outline: none;
 }
 
 .max_min_value {
@@ -222,3 +223,33 @@ h2{
 h1{
     font-size: 2.25rem;
 }
+.pagination {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  
+    a, .pagination-item {
+      margin: 0 5px;
+      padding: 8px 12px;
+      background-color: rgb(186, 75, 75);
+      color: #fff !important;
+      border-radius: 4px;
+      cursor: pointer;
+  
+      &.active {
+        background-color: #008080;
+      }
+
+    }
+    li{
+        outline: none;
+    }
+    .page-link:focus{
+        box-shadow: none;
+    }
+  }
+  .form-control:focus{
+    box-shadow: none;
+  }
