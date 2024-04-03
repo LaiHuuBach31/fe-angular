@@ -24,7 +24,7 @@ export class ImageService {
   }
 
   public getImageId(imageId : number): Observable<any>{
-    return this.http.get<any>(`${this.apiServerUrl}/${imageId}`);
+    return this.http.get<any>(`${this.apiServerUrl}/get/${imageId}`);
   }
 
   public addImage(image : any):Observable<any>{
@@ -39,4 +39,7 @@ export class ImageService {
     return this.http.delete<void>(`${this.apiServerUrl}/${imageId}`);
   }
 
+  public getListImage(imageId : number):Observable<any>{
+    return this.http.get<any>(`${this.apiServerUrl}/list/${imageId}`);
+  }
 }

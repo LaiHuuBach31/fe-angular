@@ -157,24 +157,26 @@ export const navbarData: INavbarData[] = [
         ]
     },
     {
-        routeLink: 'orders',
+        routeLink: 'order',
         icon: 'ri-archive-line',
         label: 'Order',
         items: [
             {
-                routeLink: 'orders/list',
+                routeLink: 'order/list',
                 label: 'Order List',
             },
-            {
-                routeLink: 'orders/detail',
-                label: 'Order Detail',
-            },
-            {
-                routeLink: 'orders/tracking',
-                label: 'Order Tracking',
-            }
         ]
     },
-   
+    {
+        routeLink: 'orderdetail',
+        icon: 'ri-archive-line',
+        label: 'Order Detail',
+        items: [
+            {
+                routeLink: 'orderdetail/list',
+                label: 'OrderDetail List',
+            },
+        ]
+    },
     
 ];

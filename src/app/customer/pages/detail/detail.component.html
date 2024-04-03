@@ -1,4 +1,9 @@
-<div class="" style="margin-top: 100px;">
+<div class="bg-primary" >
+    <div>
+        <img src="https://msramayya.in/wp-content/uploads/2017/09/Grapevine_SHOP_Banner.png" height="300px" width="100%" alt="">
+    </div>
+</div>
+<div class="" style="margin-top: 30px;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
@@ -6,20 +11,23 @@
                     <div class="carousel-inner">
 
                         <div class="carousel-item active">
-                            <img src="http://localhost:8080/api/v1/file/files/{{product.image}}" class="d-block w-100" height="100%">
+                            <img src="http://localhost:8080/api/v1/file/files/{{product.image}}" class="d-block w-100"
+                                height="100%">
                         </div>
 
-                      
-                        <div class="carousel-item">
-                            <img src="" class="d-block w-100" height="100%">
+
+                        <div class="carousel-item" *ngFor="let item of iamges">
+                            <img src="http://localhost:8080/api/v1/file/files/{{item.name}}" class="d-block w-100" height="100%">
                         </div>
-              
+
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -28,19 +36,23 @@
             <div class="col-lg-6">
                 <div class="d-flex align-items-center justify-content-between ">
                     <div>
-                        <h3>haha</h3>
+                        <h3>{{product.name}}</h3>
                     </div>
                     <div>
-                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/tethys-brand-2.svg" width="100%" alt="">
+                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/tethys-brand-2.svg"
+                            width="100%" alt="">
                     </div>
                 </div>
                 <div class="price ">
                     <h2>
                         <div class="d-flex">
-                          
-                            <p class="m-0" style="font-weight: 700; text-decoration: line-through;">$ {{product.price}}</p>
-                            <p class="m-0 text-danger mx-3" style="font-weight: 700;" *ngIf="product.discount>0">$ {{product.discount}}</p>
-                           
+
+                            <p class="m-0" style="font-weight: 700;">$ {{product.price}}  </p>
+                            <div *ngIf="product.discount>0">
+                                <p class="m-0" style="font-weight: 700; text-decoration: line-through;">$ {{product.price}}
+                                    <p class="m-0 text-danger mx-3" style="font-weight: 700;" >$
+                                        {{product.discount}}</p>
+                            </div>
                         </div>
                     </h2>
                 </div>
@@ -53,22 +65,22 @@
                     cases the final content.
                 </p>
 
-                <form action="" method="post">
-                    
-                    <div class="table-responsive">
+                <form  [formGroup]="addCart" (ngSubmit)="onCart()" id="form">
+                    <div class="table-responsive" *ngIf="variants.length > 0">
                         <table class="table infor" style="vertical-align: middle;">
                             <tbody>
                                 <tr class="">
                                     <td><b>Color</b></td>
                                     <td><b>:</b></td>
                                     <td>
-                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                           
+                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example"
+                                            *ngFor="let item of variants"
+                                        >
                                             <div class="mx-3 d-flex align-items-center">
-                                                <input type="radio" name="" value="1">
-                                                <i class="ri-palette-line" style="font-size: 25px;"></i>
+                                                <input type="radio" formControlName="colorId" value="{{item.color.id}}">
+                                                <i [style.color]="item.color.name" class="ri-shirt-fill" style="font-size: 25px;"></i>
                                             </div>
-                                           
+
                                         </div>
                                     </td>
                                 </tr>
@@ -78,10 +90,11 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             <div class="">
-                                                <select class="form-select form-select-lg" name="attr_id[]" id="" style="padding-top:0; padding-bottom: 0; font-weight: 500; ">
-                        
-                                                    <option value="1">M</option>
-                                                   
+                                                <select class="form-select form-select-lg" formControlName="sizeId" id=""
+                                                    style="padding-top:0; padding-bottom: 0; font-weight: 500;">
+                                                    <option value="{{item.size.id}}" *ngFor="let item of variants">
+                                                        {{item.size.name}}
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -93,24 +106,18 @@
 
 
                     <div class="d-flex text-center align-items-center">
-                        <div class="quantity align-items-center">
-                            <button type="button" onclick="mark('-')">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M5 12l14 0"></path>
-                                </svg>
-                            </button>
-                            <input type="text" value="1" name="quantity"  id="quantity">
-                            <button type="button" onclick="mark('+')">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M12 5l0 14"></path>
-                                    <path d="M5 12l14 0"></path>
-                                </svg>
-                            </button>
+                        <div class="quantity d-flex align-items-center">
+                            <div class="input ml-3">
+                                <button type="button" class="btn-fake btn left_ip" (click)="mark('-')"><i
+                                        class="ri-subtract-line"></i></button>
+                                <input type="text" formControlName="quantity" [value]="1" id="quantity" >
+                                <button type="button" class="btn-fake btn right_ip" (click)="mark('+')"><i
+                                        class="ri-add-line"></i></button>
+                            </div>
                         </div>
                         <div class="add_cart mx-3">
-                            <button type="submit" style="font-weight: 700; color: #fff; background-color: #111; border: none;">Add to card</button>
+                            <button type="submit"
+                                style="font-weight: 700; color: #fff; background-color: #111; border: none;">Add to card</button>
                         </div>
                     </div>
                 </form>
@@ -139,33 +146,49 @@
                                 <td><b>:</b></td>
                                 <td class="text-secondary share_">
                                     <a href="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-mail" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z">
+                                            <path
+                                                d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z">
                                             </path>
                                             <path d="M3 7l9 6l9 -6"></path>
                                         </svg>
                                     </a>
                                     <a href="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3">
+                                            <path
+                                                d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3">
                                             </path>
                                         </svg>
                                     </a>
                                     <a href="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-brand-instagram" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z">
+                                            <path
+                                                d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z">
                                             </path>
                                             <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
                                             <path d="M16.5 7.5l0 0"></path>
                                         </svg>
                                     </a>
                                     <a href="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013z">
+                                            <path
+                                                d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013z">
                                             </path>
                                         </svg>
                                     </a>
@@ -183,17 +206,20 @@
     <div class="option text-center">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#detail_one" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#detail_one"
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">
                     DESCRIPTION
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#detail_two" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#detail_two"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
                     INFORMATION
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#detail_three" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#detail_three"
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
                     SHIPPING & DELIVERY
                 </button>
             </li>
@@ -227,7 +253,8 @@
                         </p>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/thetys-product-page-size-guide-1.jpg" width="100%" height="150px" alt="">
+                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/thetys-product-page-size-guide-1.jpg"
+                            width="100%" height="150px" alt="">
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <p>
@@ -312,12 +339,14 @@
                                 <p class="text-secondary">Delivery service executive director</p>
                             </div>
                             <div class="col-lg-3">
-                                <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/tethys-autograph.svg" width="100%" alt="">
+                                <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/tethys-autograph.svg"
+                                    width="100%" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/shopping-1.jpg" width="100%" alt="">
+                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/shopping-1.jpg"
+                            width="100%" alt="">
                         <h3>Worldwide Shipping</h3>
                         <p class="text-secondary">
                             Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,
@@ -327,7 +356,8 @@
                         <a href="" style="color: black; font-weight: 600;">Read more</a>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/shopping-2.jpg" width="100%" alt="">
+                        <img src="https://spacedemo-cec2.kxcdn.com/demo/tethys/wp-content/uploads/sites/18/2019/11/shopping-2.jpg"
+                            width="100%" alt="">
                         <h3>Local Pickup</h3>
                         <p class="text-secondary">
                             Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print,

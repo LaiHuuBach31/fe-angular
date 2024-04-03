@@ -50,9 +50,13 @@ const routes: Routes = [
                 loadChildren: () => import('./pages/roles/roles.module').then(m => m.RolesModule)
             },
             {
-                path: 'orders',
-                loadChildren: () => import('./pages/orders/orders.module').then(m => m.OrdersModule)
+                path: 'order',
+                loadChildren: () => import('./pages/order/order.module').then(m => m.OrderModule)
             },
+            {
+              path: 'orderdetail',
+              loadChildren: () => import('./pages/orderdetail/orderdetail.module').then(m => m.OrderdetailModule)
+          },
             { path: 'banner', component: BannerCreateComponent },
             // Các tuyến đường khác của admin module
   ]}

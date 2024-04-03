@@ -23,6 +23,8 @@ export class ShopComponent implements OnInit {
   public error: any;
   public kw: any;
   public cate: any;
+  public color: any;
+  public size: any;
 
   constructor(
     private productService: ProductService,
@@ -34,13 +36,19 @@ export class ShopComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.filter();
     this.getCategory();
     this.getColor();
     this.getSize();
-    this.search();
     const keyword = this.route.snapshot.queryParamMap.get('keyword');
     this.formSearch.patchValue({ keyword: keyword })
     this.kw = keyword;
+    const min_price = this.route.snapshot.queryParamMap.get('minPrice');
+    const max_price = this.route.snapshot.queryParamMap.get('maxPrice');
+    this.formPrice.patchValue({ minPrice: min_price })
+    this.formPrice.patchValue({ maxPrice: max_price })
+    const size = this.route.snapshot.queryParamMap.get('sizeId');
+    this.size = size;
   }
 
   public getCategory() {
@@ -80,42 +88,42 @@ export class ShopComponent implements OnInit {
     )
   }
 
-  public getProduct(keyword: any = null, pageNo: any = 1) {
-    this.productService.getProduct(keyword, pageNo).subscribe(
-      {
-        next: (res: any) => {
-          this.totalItems = res.data.totalElements;
-          this.pages = res.data.totalPages;
-          this.products = res.data.content;
-          this.numbers = [];
-          for (let i = 1; i <= this.pages; i++) {
-            this.numbers.push(i);
-          }
-        },
-        error: err => {
-          this.error = err.error.message;
-        }
-      }
-    )
-  }
+  // public getProduct(keyword: any = null, pageNo: any = 1) {
+  //   this.productService.getProduct(keyword, pageNo).subscribe(
+  //     {
+  //       next: (res: any) => {
+  //         this.totalItems = res.data.totalElements;
+  //         this.pages = res.data.totalPages;
+  //         this.products = res.data.content;
+  //         this.numbers = [];
+  //         for (let i = 1; i <= this.pages; i++) {
+  //           this.numbers.push(i);
+  //         }
+  //       },
+  //       error: err => {
+  //         this.error = err.error.message;
+  //       }
+  //     }
+  //   )
+  // }
 
 
 
   search() {
-    this.route.queryParams.subscribe(
-      params => {
-        const categoryId = params['categoryId'];
-        if(categoryId !== undefined){
-          this.cate = categoryId;
-        } else{
-          const pageNo = params['pageNo'];
-          const keyword = params['keyword'];
-          this.kw = keyword;
-          this.cate = null;
-          this.getProduct(keyword, pageNo);
-        }
-      }
-    )
+    // this.route.queryParams.subscribe(
+    //   params => {
+    //     const categoryId = params['categoryId'];
+    //     if (categoryId !== undefined) {
+    //       this.cate = categoryId;
+    //     } else {
+    //       const pageNo = params['pageNo'];
+    //       const keyword = params['keyword'];
+    //       this.kw = keyword;
+    //       this.cate = null;
+    //       this.getProduct(keyword, pageNo);
+    //     }
+    //   }
+    // )
   }
 
   formSearch = new FormGroup({
@@ -132,18 +140,40 @@ export class ShopComponent implements OnInit {
     });
   }
 
-  filterCategory(categoryId: any) {
+  formPrice = new FormGroup({
+    minPrice: new FormControl(),
+    maxPrice: new FormControl(),
+  })
+  onPrice(){
     this.router.navigate([], {
       queryParams: {
-        pageNo: 1,
+        pageNo: null,
+        minPrice: this.formPrice.value.minPrice,
+        maxPrice: this.formPrice.value.maxPrice
       },
       queryParamsHandling: 'merge',
-    });     
+    });
+  }
+
+  filter() {
     this.route.queryParams.subscribe(
       params => {
-        const pageNo = params['pageNo'];
-        this.cate = categoryId; 
-        this.productService.fillterProduct(categoryId, pageNo).subscribe({
+        const categoryId = params['categoryId'];
+        const colorId = params['colorId'];
+        const sizeId = params['sizeId'];
+        const keyword = params['keyword'];
+        if(categoryId !== undefined || colorId !== undefined || sizeId !== undefined ){
+          this.cate = categoryId;
+          this.color = colorId;
+          this.size = sizeId;
+          this.kw = keyword;
+        } else{
+          this.cate = null;
+          this.color = null;
+          this.size = null;
+          this.kw = null;
+        }
+        this.productService.fillterProduct(this.getQuery()).subscribe({
           next: res => {
             if (res.data == null) {
               this.products = [];
@@ -159,20 +189,26 @@ export class ShopComponent implements OnInit {
             }
           },
           error: err => {
-            this.error = err.error.message;
+            console.log(err);
           }
         })
-      }
-    )
-      
+      })
   }
 
-  formPrice = new FormGroup({
-    min_price: new FormControl(),
-    max_price: new FormControl(),
-  });
-
-  onPrice() {
-
+  private getQuery() {
+    let queryParamsArray: any = [];
+    this.route.queryParams.forEach(params => {
+      if (params['pageNo']) queryParamsArray.push('pageNo=' + params['pageNo']);
+      if (params['keyword']) queryParamsArray.push('keyword=' + params['keyword']);
+      if (params['categoryId']) queryParamsArray.push('categoryId=' + params['categoryId']);
+      if (params['minPrice']) queryParamsArray.push('minPrice=' + params['minPrice']);
+      if (params['maxPrice']) queryParamsArray.push('maxPrice=' + params['maxPrice']);
+      if (params['sort']) queryParamsArray.push('sort=' + params['sort']);
+      if (params['colorId']) queryParamsArray.push('colorId=' + params['colorId']);
+      if (params['sizeId']) queryParamsArray.push('sizeId=' + params['sizeId']);
+    });
+    let queryParams = queryParamsArray.join('&');
+    return queryParams ? '?' + queryParams : '';
   }
+
 }

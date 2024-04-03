@@ -24,7 +24,7 @@ export class VariantService {
   }
 
   public getVariantId(variantId : number): Observable<any>{
-    return this.http.get<any>(`${this.apiServerUrl}/${variantId}`);
+    return this.http.get<any>(`${this.apiServerUrl}/get/${variantId}`);
   }
 
   public addVariant(variant : any):Observable<any>{
@@ -37,5 +37,9 @@ export class VariantService {
 
   public deleteVariant(variantId : number):Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/${variantId}`);
+  }
+
+  public getListVariant(variantId : number):Observable<any>{
+    return this.http.get<any>(`${this.apiServerUrl}/list/${variantId}`);
   }
 }

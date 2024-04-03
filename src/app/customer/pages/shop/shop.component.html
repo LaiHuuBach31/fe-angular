@@ -1,6 +1,6 @@
 <div class="bg-primary" >
     <div>
-        <img src="https://previews.123rf.com/images/vectorgift/vectorgift1608/vectorgift160800106/61622824-sale-discount-background-for-the-online-store-shop-promotional-leaflet-promotion-poster-banner.jpg" height="300px" width="100%" alt="">
+        <img src="https://msramayya.in/wp-content/uploads/2017/09/Grapevine_SHOP_Banner.png" height="300px" width="100%" alt="">
     </div>
 </div>
 <div class="container" style="margin-top: 30px;">
@@ -34,17 +34,16 @@
             <h6>Filter by Price</h6>
             <div class="filter_price">
                 <form [formGroup]="formPrice" (ngSubmit)="onPrice()">
-
                     <div class="filter_price mt-4">
                         <div class="range mt-4">
-                            <div class="max_min_value">
+                            <!-- <div class="max_min_value">
                                 <span class="from"><b>$ 1</b></span>
                                 <span class="to"><b>$ 111</b></span>
-                            </div>
+                            </div> -->
                             <div class="sort_price mt-2">
-                                <input type="text" formControlName="min_price">
+                                <input type="text" formControlName="minPrice">
                                 <span>—</span>
-                                <input type="text" formControlName="max_price">
+                                <input type="text" formControlName="maxPrice">
                             </div>
                         </div>
                     </div>
@@ -62,7 +61,7 @@
                     <ul>
                         <li *ngFor="let item of colors" class="d-flex align-items-center justify-content-between">
                             <div>
-                                <a href="">
+                                <a [routerLink]="[]"[queryParams]="{colorId: item.id , categoryId:cate, sizeId:size, keyword:kw}">
                                     <i [style.color]="item.name" class="ri-palette-line" style="font-size: 25px;"></i>
                                 </a>
                             </div>
@@ -78,7 +77,7 @@
                 <ul>
                  
                     <li *ngFor="let item of sizes">
-                        <a href="">{{item.name}}</a>
+                        <a [routerLink]="[]"[queryParams]="{sizeId: item.id , categoryId:cate, colorId:color, keyword:kw}">{{item.name}}</a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +100,7 @@
                     <div class="categories">
                         <ul>
                             <li  *ngFor="let item of categories" >
-                                <a (click)="filterCategory(item.id)" style="cursor: pointer;">{{item.name}}</a>
+                                <a style="cursor: pointer;" [routerLink]="[]"[queryParams]="{categoryId: item.id }">{{item.name}}</a>
                             </li>
                         </ul>
                     </div>

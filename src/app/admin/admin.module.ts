@@ -21,10 +21,6 @@ import { CustomersListComponent } from './pages/customers/customers-list/custome
 import { SublevelMenuComponent } from './layouts/sidenav/sublevel-menu.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { CdkMenuModule } from '@angular/cdk/menu';
-import { ListImageComponent } from './pages/image/list-image/list-image.component';
-import { UpdateImageComponent } from './pages/image/update-image/update-image.component';
-import { CreateImageComponent } from './pages/image/create-image/create-image.component';
-
 
 
 @NgModule({
@@ -45,6 +41,7 @@ import { CreateImageComponent } from './pages/image/create-image/create-image.co
         CategoryComponent,
         UserComponent,
         RolesComponent,
+        // ListOrderComponent,
         // ListImageComponent,
         // UpdateImageComponent,
         // CreateImageComponent,

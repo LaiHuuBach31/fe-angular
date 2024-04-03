@@ -29,8 +29,10 @@
                 </form>
             </div>
             <span class="material-icons" style="margin: 0 10px;">favorite_border</span>
-            <span routerLink="/login" class="material-icons" style="margin: 0 10px;">account_circle</span>
-            <span routerLink="/cart" class="material-icons" style="margin: 0 10px;" matBadge="5" matBadgeColor="warn">shopping_cart</span>
+
+            <span *ngIf="!avata" routerLink="/login" class="material-icons" style="margin: 0 10px;">account_circle</span>
+            <img *ngIf="avata" routerLink="/profile" src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/10/hinh-nen-may-man-1.jpg"  alt="" style="width: 20px; height: 20px; border-radius: 50%;margin: 0 10px;">
+            <span routerLink="/cart" class="material-icons" style="margin: 0 10px;" matBadge="{{totalItemCart}}" matBadgeColor="warn">shopping_cart</span>
         </div>
     </div>
 

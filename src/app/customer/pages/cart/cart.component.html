@@ -1,23 +1,9 @@
 <div class="bg-primary" >
-    <!-- <div class="container d-flex align-items-center text-light">
-        <div class="page py-2 text-center">
-            <a href="">Home</a>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right mx-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M5 12l14 0"></path>
-                <path d="M15 16l4 -4"></path>
-                <path d="M15 8l4 4"></path>
-            </svg>
-            <strong style="border-bottom: 1px solid #fff;">Your Cart</strong>
-        </div>
-    </div> -->
     <div>
         <img src="https://thumbs.dreamstime.com/b/empty-shopping-cart-inscription-green-wooden-background-web-banner-wood-word-trolley-one-side-concept-online-178287757.jpg" height="300px" width="100%" alt="">
     </div>
 </div>
 <div class="container">
-
-
     <div>
         <div class="list_cart_1024">
             <div class="list-cart-top mt-5">
@@ -25,7 +11,7 @@
                     <div class="row d-flex justify-content-between ">
                         <div class="row title_top col-lg-12 col-md-12 col-sm-6">
                             <div class="col-lg-1 col-md-1 col-sm-12 title_cart">
-                                <h4>STT</h4>
+                                <h4></h4>
                             </div>
                             <div class="col-lg-5 col-md-4 col-sm-12 title_cart">
                                 <h4>PRODUCT NAME</h4>
@@ -47,34 +33,33 @@
                         </div>
                         
                        
-                        <div class="row title_tops list_products col-lg-12 col-md-12 col-sm-6">
+                        <div class="row title_tops list_products col-lg-12 col-md-12 col-sm-6"
+                            *ngFor="let item of carts"
+                        >
                             <div class="col-lg-1 d-flex align-items-center col-md-1 col-sm-12 content_cart">
-                                <h5 class="id_cart">1</h5>
+                                <input type="checkbox" name="stt" value="{{item.id}}" style="width: auto; height: auto;" (click)="chooseCart(item)">
                             </div>
                             <div class="col-lg-5 d-flex align-items-center content_cart product_name_content col-md-4 col-sm-12">
-                                <img src="https://dulichviet.com.vn/images/bandidau/danh-sach-nhung-buc-anh-viet-nam-lot-top-anh-dep-the-gioi.jpg" alt="" width="100px" height="100px">
+                                <img src="http://localhost:8080/api/v1/file/files/{{item.product.image}}" alt="" width="100px" height="100px">
                                 <!-- <h5 class="mx-3"><strong>ao</strong></h5> -->
-                                <form action="" method="post">
+                                <form>
                                     <div style="margin: 0px 25px">
-                                        <h5 class="mb-2"><strong>ao đẹp nhất vịnh bắc bộ</strong></h5>
+                                        <h5 class="mb-2"><strong>{{item.product.name}}</strong></h5>
                                         <div class="d-flex">
                                             <div class="">
-                                                <select class="form-select form-select-lg" name="" style="padding-top: 0; padding-bottom: 0; font-size: 18px;">
-                                                    <option value="">
-                                                        S
+                                                <select class="form-select form-select-lg" name="sizeId" style="padding-top: 0; padding-bottom: 0; font-size: 18px;" (change)="updateSize($event.target, item.id)">
+                                                    <option *ngFor="let v of item.product.variant" [value]="v.size.id" [selected]="item.size.id === v.size.id" >
+                                                        {{v.size.name}}
                                                     </option>
                                                 </select>
                                             </div>
                                             <div class="">
-                                                <select class="form-select form-select-lg" name="" style="padding-top: 0; padding-bottom: 0; font-size: 18px;">
-                                                    <option value="">
-                                                        S
+                                                <select class="form-select form-select-lg" name="colorId" style="padding-top: 0; padding-bottom: 0; font-size: 18px;" (change)="updateColor($event.target, item.id)">
+                                                    <option *ngFor="let v of item.product.variant" [value]="item.color.id" [selected]="item.color.id === v.color.id">
+                                                        {{v.color.name}}
                                                     </option>
                                                 </select>
                                             </div>
-                                            <button type="submit" class="text-light" style="background-color: green; border: 1px solid gray;">
-                                                <i class="ri-refresh-line"></i>
-                                            </button>
                                         </div>
                                     </div>
                                     
@@ -82,40 +67,39 @@
                             </div>
                             <div class="col-lg-6 col-md-7 col-sm-12 row align-items-center ">
                                 <div class="col-lg-3 col-md-3 content_cart col-sm-12">
-
-                                    <strong>$ 10</strong>
+                                    <strong id="price{{item.id}}">$ {{item.product.price}}</strong>
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-12">
                                     <form action="" method="post" id="form">
                                         <div class="input ml-3">
-                                            <button type="button" class="btn-fake btn left_ip" (click)="mark_cart('-')"><i class="ri-subtract-line"></i></button>
-                                            <input type="text" name="quantity_cart" value="4" id="quantity" onblur="quantityCart()">
-                                            <button type="button" class="btn-fake btn right_ip" (click)="mark_cart('+')"><i class="ri-add-line"></i></button>
+                                            <button type="button" class="btn-fake btn left_ip" (click)="mark_cart('-', item.id)"><i class="ri-subtract-line"></i></button>
+                                            <input type="text" name="quantity_cart" value="{{item.quantity}}" id="quantity{{item.id}}">
+                                            <button type="button" class="btn-fake btn right_ip" (click)="mark_cart('+', item.id)"><i class="ri-add-line"></i></button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="col-lg-3 col-md-3 content_cart col-sm-12">
-                                    <h5><strong>$ tong tien</strong></h5>
+                                    <h5><strong id="total{{item.id}}">$  {{item.product.price * item.quantity}}</strong></h5>
                                 </div>
                                 <div class="col-lg-1 col-md-1 content_cart col-sm-12">
-                                    <a href="" onclick="return confirm('are you ok ?')" style="color: #111;"><i class="fa-solid fa-xmark"></i></a>
+                                    <a  (click)="delete(item.id)" style="color: #111;"><i class="ri-delete-bin-line"></i></a>
                                 </div>
                             </div>
                         </div>
                        
-                        <div class="pt-5 text-right">
-                            <h5 class="text-danger"><strong>Total Price : $ </strong></h5>
-                        </div>
+                        <!-- <div class="pt-5 text-right">
+                            <h5 class="text-danger"><strong>Total Price : $ {{ totalPrice }} </strong></h5>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
         <div class="container updateCart mt-5 mb-5 container_custom">
             <div class="proceed">
-                <a href="">PROCEED TO CHECKOUT</a>
+                <a  routerLink="/checkout">PROCEED TO CHECKOUT</a>
             </div>
             <div class="continues">
-                <a href="">CONTINUE SHOPPING</a>
+                <a  routerLink="/shop">CONTINUE SHOPPING</a>
             </div>
         </div>
 
@@ -221,8 +205,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
-
+    
             <div class="container updateCart mt-5 mb-5 container_custom">
                 <div class="proceed">
                     <a href="">PROCEED TO CHECKOUT</a>
@@ -232,7 +215,6 @@
                 </div>
             </div>
 
-            @endif
         </div>
     </div>
 

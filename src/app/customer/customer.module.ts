@@ -17,6 +17,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { RegisterComponent } from './pages/register/register.component';
     DetailComponent,
     CartComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CheckoutComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
