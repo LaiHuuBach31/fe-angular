@@ -23,7 +23,7 @@ export class CustomInterceptor implements HttpInterceptor {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 401) {
-            this.router.navigate(["/login"]);
+            this.router.navigate(["/adminlogin"]);
             sessionStorage.clear();
           }
           return throwError(error);

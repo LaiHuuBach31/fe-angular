@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.authService.onLogin(this.formLogin.value).subscribe({
       next: (res) => {
         if(res.data){
-          sessionStorage.setItem('login', res.data.access_token)
+          sessionStorage.setItem('token', res.data.access_token)
           this.logInSuccessful();
           this.router.navigate(['/']);
         }

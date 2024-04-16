@@ -29,10 +29,18 @@
                 </form>
             </div>
             <span class="material-icons" style="margin: 0 10px;">favorite_border</span>
-
-            <span *ngIf="!avata" routerLink="/login" class="material-icons" style="margin: 0 10px;">account_circle</span>
-            <img *ngIf="avata" routerLink="/profile" src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/10/hinh-nen-may-man-1.jpg"  alt="" style="width: 20px; height: 20px; border-radius: 50%;margin: 0 10px;">
             <span routerLink="/cart" class="material-icons" style="margin: 0 10px;" matBadge="{{totalItemCart}}" matBadgeColor="warn">shopping_cart</span>
+
+            <span *ngIf="avata === null" routerLink="/login" class="material-icons" style="margin: 0 10px;">account_circle</span>
+            <div class="dropdown">
+                <button class="dropdown-toggle" type="" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img *ngIf="avata !== null" src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/10/hinh-nen-may-man-1.jpg"  alt="" style="width: 25px; height: 25px; border-radius: 50%;margin: 0 10px;">
+                </button>
+                <ul class="dropdown-menu" style="cursor: pointer;">
+                  <li routerLink="/profile" ><a class="dropdown-item" ><i class="ri-profile-line"></i> Profile</a></li>
+                  <li><a class="dropdown-item" (click)="logout()"><i class="ri-logout-circle-r-line"></i> Logout</a></li>
+                </ul>
+              </div>
         </div>
     </div>
 

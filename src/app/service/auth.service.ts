@@ -9,12 +9,16 @@ import { environment } from 'src/env/environment';
 })
 export class AuthService {
 
-  private apiServerUrl = environment.apiBaseUrl + '/auth/login';
+  private apiServerUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
   onLogin(data: any): Observable<any> {
-    return this.http.post<any>(`${this.apiServerUrl}`, data);
+    return this.http.post<any>(`${this.apiServerUrl}/auth/login`, data);
+  }
+
+  onLogout():Observable<any> {
+    return this.http.post<any>(`${this.apiServerUrl}/logout`, null);
   }
 
   hasRoles(){

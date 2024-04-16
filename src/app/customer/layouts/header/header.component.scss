@@ -42,6 +42,8 @@
         }
         .left_menu{
             position: relative;
+            display: flex;
+            align-items: center;
             span{
                 cursor: pointer;
                 &:hover{
@@ -83,7 +85,13 @@
             .close_icon{
                 display: none;
             }
-          
+            button {
+                background-color: transparent;
+                border: none; 
+            }
+            .dropdown-toggle::after{
+                content: none;
+            }
         }
     }
    
@@ -119,6 +127,7 @@
                 }
             }
         }
+
     }
     .menu_992_right{
         .left_menu{
@@ -169,5 +178,3 @@
         }
     }
 }
-
-
